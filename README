@@ -1,0 +1,6 @@
+to use it open /etc/hosts and add a new line containing 'aaa' string:)
+
+to start the script run it in terminal
+input virtual host name
+input virtual host DocumentRoot. input full path
+if there is no directory, the script creates one with index.php inside. index.php contains phpinfo()
