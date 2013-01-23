@@ -1,4 +1,8 @@
 #!/bin/bash
+
+#a label in /etc/hosts we add our hosts after
+export HostLabel='#Virtual hosts created by AddVirtualHost'
+
 echo "Enter virtual host name:"
 read ServerName
 echo "Enter document root:"
@@ -17,7 +21,9 @@ else
     cp phpinfo.php $DocumentRoot"/index.php"
 fi
 sudo a2ensite $ServerName
-sudo sed 's/aaa/'"aaa\n127.0.0.1 $ServerName"'/' /etc/hosts > a
+#to add senseless aaa string was too bad idea
+#just add something that has sense
+sudo sed 's/'"$HostLabel"'/'"$HostLabel\n127.0.0.1 $ServerName"'/' /etc/hosts > a
 sudo mv a /etc/hosts
 sudo /etc/init.d/apache2 reload
 sudo /etc/init.d/apache2 restart
