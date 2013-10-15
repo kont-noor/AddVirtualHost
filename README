@@ -1,7 +1,7 @@
 for now it works in Ubuntu only and uses bash.
 I'm going to update it to work with Arch Linux and maybe use php.
 
-to start the script run it in terminal as root.
+to start the script run it in terminal
 input virtual host name
 input virtual host DocumentRoot. input full path
 if there is no directory, the script creates one with index.php inside. index.php contains phpinfo()
