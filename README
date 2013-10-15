@@ -1,10 +1,8 @@
 for now it works in Ubuntu only and uses bash.
 I'm going to update it to work with Arch Linux and maybe use php.
 
-to use it open /etc/hosts and add a new line containing 'aaa' string:)
-(I'll change this hardcode when I have a time)
-
-to start the script run it in terminal
+to start the script run it in terminal as root.
 input virtual host name
 input virtual host DocumentRoot. input full path
 if there is no directory, the script creates one with index.php inside. index.php contains phpinfo()
+input DocumentRoot owner UserName
