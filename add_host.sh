@@ -8,6 +8,17 @@ fi
 read -p "Enter the server name your want (without www) :" ServerName
 read -p "Enter document root (e.g.: /var/www/website, dont forget the /):" DocumentRoot
 read -p "Enter the user you want to use ('apache' is default) :" UserName
+if $ServerName == '' then
+    echo "ServerName must be not empty !"
+    exit 1;
+fi
+if $DocumentRoot == '' then
+    echo "DocumentRoot must be not empty !"
+    exit 1;
+fi
+if $UserName == '' then
+    $UserName = 'apache'
+fi
 
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
