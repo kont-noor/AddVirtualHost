@@ -23,6 +23,11 @@ fi
 sudo a2ensite $ServerName
 #to add senseless aaa string was too bad idea
 #just add something that has sense
+if ! grep "$HostLabel" /etc/hosts; then
+	cp /etc/hosts a
+	echo "$HostLabel" >> a
+	sudo mv a /etc/hosts
+fi
 sudo sed 's/'"$HostLabel"'/'"$HostLabel\n127.0.0.1 $ServerName"'/' /etc/hosts > a
 sudo mv a /etc/hosts
 sudo /etc/init.d/apache2 reload
