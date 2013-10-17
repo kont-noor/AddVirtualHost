@@ -7,8 +7,9 @@ echo "Enter virtual host name:"
 read ServerName
 echo "Enter document root:"
 read DocumentRoot
-cd ~/soft/add_virtual_host
-sudo cp templateHost /etc/apache2/sites-available/$ServerName
+
+export ScriptRoot="$(dirname ${BASH_SOURCE[0]})"
+sudo cp $ScriptRoot/templateHost /etc/apache2/sites-available/$ServerName
 sudo sed -i "s/\$ServerName/$ServerName/g" /etc/apache2/sites-available/$ServerName
 sudo sed -i -e "s/\$DocumentRoot/$(echo $DocumentRoot | sed -e 's/\(\/\|\\\|&\)/\\&/g')/g" /etc/apache2/sites-available/$ServerName
 if [ -d $DocumentRoot ]; then
@@ -18,7 +19,7 @@ else
     sudo mkdir $DocumentRoot
     sudo chown `whoami` $DocumentRoot
     chmod 755 $DocumentRoot
-    cp phpinfo.php $DocumentRoot"/index.php"
+    cp $ScriptRoot/phpinfo.php $DocumentRoot"/index.php"
 fi
 sudo a2ensite $ServerName
 #to add senseless aaa string was too bad idea
